@@ -1,6 +1,17 @@
+class Node
+     attr_accessor :value, :next_node
+     def initialize(value = nil, next_node = nil)
+       @value = value
+       @next_node = next_node
+     end
+     def value
+       @value
+     end
+end
+
 class LinkedList
   def initialize
-    @head = Node.new.value("head")
+    @head = Node.new("head", nil)
   end
   def append #Add a new node to the end of the list
   end
@@ -9,7 +20,7 @@ class LinkedList
   def size #Return total num nodes in list
   end
   def head #Return the first node in list
-    @head
+    @head.value
   end
   def tail #Return the last node in list
   end
@@ -31,18 +42,8 @@ def remove_at(index) #Removes node at given index, updates list with new node lo
 end
 end
 
-class Node
-  attr_accessor :value, :next_node
-  def initialize
-  end
-  def value(value = nil, next_node = nil)
-    @value = value
-    @next_node = next_node
-  end
 
-end
 
-cat = Node.new()
-puts cat.value().class
+
 cattery = LinkedList.new
-puts cattery.head.class
+puts cattery.head
