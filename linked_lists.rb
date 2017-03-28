@@ -1,5 +1,6 @@
 class LinkedList
   def initialize
+    @head = Node.new.value("head")
   end
   def append #Add a new node to the end of the list
   end
@@ -8,6 +9,7 @@ class LinkedList
   def size #Return total num nodes in list
   end
   def head #Return the first node in list
+    @head
   end
   def tail #Return the last node in list
   end
@@ -30,6 +32,7 @@ end
 end
 
 class Node
+  attr_accessor :value, :next_node
   def initialize
   end
   def value(value = nil, next_node = nil)
@@ -41,3 +44,5 @@ end
 
 cat = Node.new()
 puts cat.value().class
+cattery = LinkedList.new
+puts cattery.head.class
