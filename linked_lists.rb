@@ -14,8 +14,10 @@ class LinkedList
     @head = Node.new("head", nil)
   end
   def append #Add a new node to the end of the list
+
   end
-  def prepend #Add a new node to start of list
+  def prepend(value) #Add a new node to start of list
+    @head = Node.new(value, @head.next_node)
   end
   def size #Return total num nodes in list
   end
@@ -46,4 +48,6 @@ end
 
 
 cattery = LinkedList.new
+puts cattery.head
+cattery.prepend("butt")
 puts cattery.head
