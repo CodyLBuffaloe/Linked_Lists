@@ -12,19 +12,42 @@ end
 class LinkedList
   def initialize
     @head = Node.new("head", nil)
+    @tail = @head
   end
-  def append #Add a new node to the end of the list
-
+  def append(value) #Add a new node to the end of the list
+    node_to_add = Node.new(value)
+    if(@head == nil)
+      @head = node_to_add
+      @tail = @head
+    else
+      @tail.next_node = node_to_add
+      @tail = node_to_add
+    end
   end
   def prepend(value) #Add a new node to start of list
-    @head = Node.new(value, @head.next_node)
+    node_to_add = Node.new(value)
+    if(@head == nil)
+      @head = node_to_add
+      @tail = @head
+    else
+      node_to_add.next_node = @head
+      @head = node_to_add
+    end
   end
   def size #Return total num nodes in list
+    current_node = @head
+    i = 0
+    until current_node == nil do
+      current_node = current_node.next_node
+      i += 1
+    end
+    i
   end
   def head #Return the first node in list
     @head.value
   end
   def tail #Return the last node in list
+    @tail.value
   end
   def at(index) #Return node at specified index
   end
@@ -50,4 +73,6 @@ end
 cattery = LinkedList.new
 puts cattery.head
 cattery.prepend("butt")
-puts cattery.head
+cattery.append("Trashbeard")
+puts cattery.tail
+puts cattery.size
