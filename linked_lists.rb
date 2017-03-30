@@ -11,7 +11,7 @@ end
 
 class LinkedList
   def initialize
-    @head = Node.new("head", nil)
+    @head = Node.new
     @tail = @head
   end
   def append(value) #Add a new node to the end of the list
@@ -61,8 +61,35 @@ class LinkedList
     i.value
   end
   def pop #Remove tail node from list
+    if(@head.value == nil)
+      print "List empty, there is nothing to delete."
+      return nil
+    elsif(@head == @tail)
+      node_to_delete = @head
+      @head = nil
+      @tail = nil
+      print "Node that contained #{node_to_delete.value} deleted."
+    else
+      find_tail = @head
+      until find_tail == @tail do
+        find_tail = find_tail.next_node
+      end
+      node_to_delete = @tail
+      @tail = find_tail
+      print "Node that contained #{node_to_delete.value} was deleted."
+    end
   end
   def contains?(data) #Return true if argument matches item in list, false if not
+    datum = @head
+    while(datum.next_node != nil)
+      if(datum.value == data)
+        print true
+        return true
+      end
+      datum = datum.next_node
+    end
+    print false
+    return false
   end
   def find(data) #Return index of node containing specified data, nil if false
   end
@@ -80,9 +107,6 @@ end
 
 
 cattery = LinkedList.new
-puts cattery.head
-cattery.prepend("butt")
-cattery.append("Trashbeard")
-puts cattery.tail
+cattery.prepend("quince")
 puts cattery.size
-puts cattery.at(4)
+
