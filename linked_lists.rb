@@ -92,6 +92,18 @@ class LinkedList
     return false
   end
   def find(data) #Return index of node containing specified data, nil if false
+    start = @head
+    i = 0
+    while(start != nil)
+      if(start.value == data)
+        print "The value you requested is located at index #{i}."
+        return i
+      end
+      start = start.next_node
+      i += 1
+    end
+    print "Data was not found in this list."
+    return nil
   end
   def to_s #Print out the entire list as strings, like the example below
     puts "(data) -> (data) -> (data) -> nil"
@@ -108,5 +120,7 @@ end
 
 cattery = LinkedList.new
 cattery.prepend("quince")
-puts cattery.size
+cattery.find("nibs")
+cattery.append("nibs")
+cattery.find("nibs")
 
