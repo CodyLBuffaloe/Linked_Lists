@@ -106,7 +106,14 @@ class LinkedList
     return nil
   end
   def to_s #Print out the entire list as strings, like the example below
-    puts "(data) -> (data) -> (data) -> nil"
+    list = ""
+    node = @head
+    while(node != nil)
+      list << "(#{node.value}) -> "
+      node = node.next_node
+    end
+    list << "nil"
+    print list
   end
 #Extra Credit:
 def insert_at(index) #Inserts data to given index
@@ -120,7 +127,6 @@ end
 
 cattery = LinkedList.new
 cattery.prepend("quince")
-cattery.find("nibs")
 cattery.append("nibs")
-cattery.find("nibs")
+cattery.to_s
 
