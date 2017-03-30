@@ -50,6 +50,15 @@ class LinkedList
     @tail.value
   end
   def at(index) #Return node at specified index
+    if(index > self.size)
+      print "Index out of bounds!"
+      return nil
+    end
+    i = @head
+    1.upto(index) do
+      i = i.next_node
+    end
+    i.value
   end
   def pop #Remove tail node from list
   end
@@ -76,3 +85,4 @@ cattery.prepend("butt")
 cattery.append("Trashbeard")
 puts cattery.tail
 puts cattery.size
+puts cattery.at(4)
