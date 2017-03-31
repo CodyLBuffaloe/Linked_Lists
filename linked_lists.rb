@@ -58,7 +58,7 @@ class LinkedList
     1.upto(index) do
       i = i.next_node
     end
-    i.value
+    i
   end
   def pop #Remove tail node from list
     if(@head.value == nil)
@@ -116,10 +116,32 @@ class LinkedList
     print list
   end
 #Extra Credit:
-def insert_at(index) #Inserts data to given index
-end
-def remove_at(index) #Removes node at given index, updates list with new node locations
-end
+  def insert_at(index, data) #Inserts data to given index
+    if(index == 0)
+      self.prepend(data)
+    elsif(index > self.size())
+      self.append(data)
+    else
+      new_node = Node.new(data, self.at(index))
+      prev = self.at((index-1))
+      prev.next_node = new_node
+    end
+  end
+  def remove_at(index) #Removes node at given index, updates list with new node locations
+    if(index > self.size)
+      puts "Error, index out of bounds, nothing there to remove!"
+    elsif(index == self.size)
+      self.pop
+    elsif(index == 0)
+      pick_up = @head.next_node
+      @head = pick_up
+    else
+      remove = self.at(index)
+      pick_up = remove.next_node
+      previous = self.at((index-1))
+      previous.next_node = pick_up
+    end
+  end
 end
 
 
@@ -128,5 +150,16 @@ end
 cattery = LinkedList.new
 cattery.prepend("quince")
 cattery.append("nibs")
+cattery.insert_at(10, "doggie")
+cattery.insert_at(0, "bombay")
+cattery.insert_at(2, "Abyssinian")
+cattery.remove_at(3)
 cattery.to_s
+puts " "
+cattery.remove_at(1)
+cattery.to_s
+puts " "
+cattery.remove_at(0)
+cattery.to_s
+
 
